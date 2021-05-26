@@ -52,6 +52,14 @@ const ArticleSchema = new mongoose.Schema({
   updated_date: {
     type: Date,
     default: Date.now
+  },
+  uploader: {
+    type: String,
+    default: ''
+  },
+  collected: {
+    type: Boolean,
+    default: false
   }
 });
 

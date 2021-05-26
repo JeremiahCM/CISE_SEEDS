@@ -1,10 +1,11 @@
+
 import React, {Component} from 'react';
 import Table from './Table.js';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';  
 
-export default class ShowAllArticles extends React.Component {
+export default class registeredUser extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -13,7 +14,6 @@ export default class ShowAllArticles extends React.Component {
       ],
     }
 }
-
 componentDidMount() {
   axios
     .get('http://localhost:8082/api/articles')
@@ -41,6 +41,6 @@ componentDidMount() {
 }
 
 Link.render(
-    <ShowAllArticles />, 
+    <registeredUser />, 
     document.getElementById("app")
   );
