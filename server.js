@@ -1,16 +1,16 @@
 // server.js
-require("dotenv").config()
 
-import express, { json, static } from 'express';
-import connectDB from './config/db';
-import cookieParser from 'cookie-parser';
-import { join } from 'path';
-import cors from 'cors';
+
+const express = require('express');
+const connectDB = require('./config/db');
+const cookieParser = require('cookie-parser');
+const path = require('path')
+var cors = require('cors');
 
 // routes
-import articles from './routes/api/articles';
-import users from "./routes/api/users";
-import collections from "./routes/api/collections";
+const articles = require('./routes/api/articles');
+const users = require("./routes/api/users");
+const collections = require("./routes/api/collections");
 
 const app = express();
 
@@ -24,12 +24,12 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 
 // Init Middleware
-app.use(json({ extended: false }));
+app.use(express.json({ extended: false }));
 
-app.use(static(join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.get("*", (req, res) => {
-    res.sendFile(join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 app.get('/', (req, res) => res.send('Hello world!'));
@@ -39,6 +39,6 @@ app.use('/api/articles', articles);
 app.use('/api/users', users);
 app.use('/api/collection', collections);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8082;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
