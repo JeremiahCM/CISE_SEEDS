@@ -2,7 +2,7 @@
   "name": "cise_seeds",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./client/src/app.js",
   "scripts": {
     "start": "node server.js",
     "app": "nodemon app.js",
